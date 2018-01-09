@@ -15,6 +15,9 @@ class IndexView(generic.ListView):
 
 
 class DetailView(generic.DetailView):
+    """
+    Detail view for one poll object.
+    """
     model = Question
     template_name = 'polls/detail.html'
 
