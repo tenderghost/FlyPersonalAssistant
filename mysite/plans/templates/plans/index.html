@@ -11,7 +11,7 @@
 <body>
     <h1>Plan Management</h1>
     <ul>
-        {% for plan in latest_plan_list %} {{plan.plan_text}} {{plan.start_date}} {% endfor %}
+        {% for plan in latest_plan_list %} {{plan.plan_text}} {{plan.start_date}} - {{plan.end_date}} {% endfor %}
     </ul>
 </body>
 

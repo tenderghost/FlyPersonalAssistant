@@ -10,5 +10,8 @@ class Plan(models.Model):
     end_date = models.DateTimeField('plan to end')
     progress = models.IntegerField()
 
+    # Remark of the plan
+    remark = models.CharField(max_length = 500, blank = True)
+
     def __str__(self):
         return self.plan_text
