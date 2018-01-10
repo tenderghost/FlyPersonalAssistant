@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Plan(models.Model):
@@ -6,12 +7,30 @@ class Plan(models.Model):
     A model represents a plan
     """
     plan_text = models.CharField(max_length=200)
+    # What category this plan belongs to
+    category = models.CharField(max_length=50, blank=True)
     start_date = models.DateTimeField('plan to begin')
     end_date = models.DateTimeField('plan to end')
-    progress = models.IntegerField()
-
+    progress = models.IntegerField(default=0)
     # Remark of the plan
     remark = models.CharField(max_length = 500, blank = True)
+
+
+    def calc_date_percentage(self):
+        """
+        Calculate the days passed in the whole date span, in percentage
+        """
+        date_span = self.end_date - self.start_date
+        now = timezone.now()
+
+        if now > self.start_date:
+            pctg = (now - self.start_date) * 100 / date_span
+            pctg = round(pctg, 2)
+
+            return pctg
+        else:
+            return 'NOT START YET'
+
 
     def __str__(self):
         return self.plan_text

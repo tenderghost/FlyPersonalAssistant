@@ -6,26 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'plans/bootstrap.min.css' %}">
+    <script src="{% static 'plans/bootstrap.bundle.min.js' %}"></script>
     <title>Plan Management</title>
 </head>
 
 <body>
     <h1>Plan Management</h1>
 
-    <table class="table">
+    <table class="table table-sm">
         <thead class="thead-light">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Plan</th>
                 <th scope="col">StartDate</th>
                 <th scope="col">EndDate</th>
+                <th scope="col">Time(%)</th>
+                <th scope="col">Progress(%)</th>
             </tr>
         </thead>
         <tbody>
@@ -35,10 +33,16 @@
                 <td>{{plan.plan_text}}</td>
                 <td>{{plan.start_date}}</td>
                 <td>{{plan.end_date}}</td>
+                <td>{{plan.calc_date_percentage}}</td>
+                <td>{{plan.progress}}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+<div>
+    <a href="/admin/plans/plan/add/">新建计划（Admin界面）</a>
+    <button class="btn btn-info">新的计划</button>
+</div>
 </body>
 
 </html>
