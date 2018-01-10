@@ -12,5 +12,11 @@ class IndexView(generic.ListView):
         return Plan.objects.all()
 
 
+class CreateView(generic.CreateView):
+    template_name = "plans/create.html"
+    fields = ['plan_text', 'category', 'start_date', 'end_date']
+    model = Plan
+
+
 def index(request):
     return HttpResponse('Plan Management start here!')
