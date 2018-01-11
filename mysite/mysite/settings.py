@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Add LOGIN_URL settings to prevent go to the default /accounts/login/ which does NOT exists!
+LOGIN_URL = '/admin/login/'
+
 
 # Application definition
 
