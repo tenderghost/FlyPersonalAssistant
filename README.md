@@ -18,3 +18,6 @@ Add more view according to the tutorial: https://docs.djangoproject.com/en/2.0/i
 6. Make migration: python manage.py makemigrations polls
 7. Do the migration: python manage.py migrate
 8. Create superuser using: python manage.py createsuperuser
+
+# Changes after using docker
+Thanks of docker you can run it using "docker-compose up" ONLY!
