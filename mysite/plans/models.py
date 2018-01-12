@@ -11,6 +11,9 @@ class Plan(models.Model):
     category = models.CharField(max_length=50, blank=True)
     start_date = models.DateTimeField('plan to begin')
     end_date = models.DateTimeField('plan to end')
+    # When this plan has finished?
+    finished_at = models.DateTimeField(null=True)
+    # The progress of the plan
     progress = models.IntegerField(default=0)
     # Remark of the plan
     remark = models.CharField(max_length = 500, blank = True)
