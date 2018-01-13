@@ -21,5 +21,6 @@ urlpatterns = [
     path('', HomepageView.as_view()),
     path('admin/', admin.site.urls),
     path('polls/', include('polls.urls')),
+    path('periods/', include('periods.urls')),
     path('plans/', include('plans.urls'))
 ]
