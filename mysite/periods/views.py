@@ -7,7 +7,8 @@ from .models import PeriodDef
 
 class IndexView(generic.ListView):
     template_name = "periods/index.html"
-    queryset = PeriodDef.objects.all();
+    context_object_name = "period_defs"
+    queryset = PeriodDef.objects.all()
     pass
 
 def index(request):

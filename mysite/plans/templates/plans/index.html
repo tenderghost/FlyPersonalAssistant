@@ -25,6 +25,7 @@
                 <th scope="col">EndDate</th>
                 <th scope="col">Time(%)</th>
                 <th scope="col">Progress(%)</th>
+                <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
             </tr>
         </thead>
@@ -38,6 +39,9 @@
                 <td>{{plan.end_date|date:"m/d/Y"}}</td>
                 <td>{{plan.calc_date_percentage}}</td>
                 <td>{{plan.progress}}</td>
+                <td>
+                    <a href="/admin/plans/plan/{{plan.id}}/change/">Edit</a>
+                </td>
                 <td>
                     <a href="/plans/plan/{{plan.id}}/del">Delete</a>
                 </td>

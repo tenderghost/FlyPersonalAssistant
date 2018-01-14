@@ -37,3 +37,20 @@ class Plan(models.Model):
 
     def __str__(self):
         return self.plan_text
+
+
+class PlanChange(models.Model):
+    """
+    Plan change log
+    """
+    # Which plan this change log belongs to
+    plan = models.ForeignKey(Plan, on_delete = models.CASCADE)
+    change_reason = models.CharField(max_length = 200)
+    change_time = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        # used for change default table name
+        db_table = 'plans_plan_change_log'
+
+    def __str__(self):
+        return self.plan.plan_text + " -> " + self.change_reason

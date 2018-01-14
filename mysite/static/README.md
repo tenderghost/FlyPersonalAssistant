@@ -1,0 +1,1 @@
+See https://docs.djangoproject.com/en/dev/howto/static-files/ for more informations.
