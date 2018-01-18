@@ -5,19 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% load static %}
-    <link rel="stylesheet" href="{% static 'plans/bootstrap.min.css' %}">
-    <script src="{% static 'plans/bootstrap.bundle.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/jquery-3.2.1.slim.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script>
+        $(function() {
+            var t = $("#btnSearchInProgress");
+            t.click(function() {
+                alert("Clicked!");
+            });
+        });
     </script>
     <title>Plan Management</title>
 </head>
 
 <body>
     <h1>Plan Management with Docker</h1>
-    <div id="plan_filters">
-        <a href="#" class="btn btn-info">In Progress</a>
-        <a href="#" class="btn btn-info">Finished</a>
-        <a href="#" class="btn btn-info">All</a>
+    <div id="plan_filters" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            <button id="btnSearchInProgress" type="button" class="btn btn-info">In Progress</button>
+            <button type="button" class="btn btn-info">Finished</button>
+            <button type="button" class="btn btn-info">All</button>
+        </div>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search plan text" aria-label="Input group example" aria-describedby="btnGroupAddon">
+            <div class="input-group-prepend">
+                <div class="input-group-text" id="btnGroupAddon">Search</div>
+            </div>
+        </div>
     </div>
     <table class="table table-striped">
         <thead class="thead-dark">
