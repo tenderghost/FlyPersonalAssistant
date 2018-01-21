@@ -6,9 +6,10 @@
 <div id="plan_container" style="padding: 20px;">
     <div id="plan_filters" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group mr-2" role="group" aria-label="First group">
-            <button id="btnSearchInProgress" type="button" class="btn btn-info">In Progress</button>
-            <button type="button" class="btn btn-info">Finished</button>
-            <button type="button" class="btn btn-info">All</button>
+            <a href="{% url 'plans:index' %}?type=not_start" class="btn btn-info">Not Started</a>
+            <a href="{% url 'plans:index' %}?type=in_progress" class="btn btn-info">In Progress</a>
+            <a href="{% url 'plans:index' %}?type=finished" class="btn btn-info">Finished</a>
+            <a href="{% url 'plans:index' %}?type=all" class="btn btn-info">All</a>
         </div>
     </div>
     <table class="table table-striped">
