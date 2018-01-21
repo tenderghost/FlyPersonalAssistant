@@ -16,16 +16,16 @@ class IndexView(generic.ListView):
             # get request filters
             plan_type = self.request.GET['type']
             if plan_type == 'in_progress':
-                return Plan.objects.filter(status = 'I').order_by("-end_date")
+                return Plan.objects.filter(status = 'I').order_by("end_date")
             elif plan_type == 'not_start':
-                return Plan.objects.filter(status = 'U').order_by("-end_date")
+                return Plan.objects.filter(status = 'U').order_by("end_date")
             elif plan_type == 'finished':
-                return Plan.objects.filter(status = 'F').order_by("-end_date")
+                return Plan.objects.filter(status = 'F').order_by("end_date")
             elif plan_type == 'all':
-                return Plan.objects.all().order_by("-end_date")
+                return Plan.objects.all().order_by("end_date")
         else:
             # no request parameter, set default view
-            return Plan.objects.exclude(status='F').order_by("-end_date")
+            return Plan.objects.exclude(status='F').order_by("end_date")
 
 
 
