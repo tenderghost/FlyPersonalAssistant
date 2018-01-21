@@ -15,8 +15,7 @@
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Plan</th>
+                <th scope="col">Plan Text</th>
                 <th scope="col">Category</th>
                 <th scope="col">StartDate</th>
                 <th scope="col">EndDate</th>
@@ -30,8 +29,7 @@
         <tbody>
             {% for plan in latest_plan_list %}
             <tr>
-                <th scope="row">{{plan.id}}</th>
-                <td>{{plan.plan_text}}</td>
+                <td scope="row">{{plan.plan_text}}</td>
                 <td>{{plan.category}}</td>
                 <td>{{plan.start_date|date:"m/d/Y"}}</td>
                 <td>{{plan.end_date|date:"m/d/Y"}}</td>
