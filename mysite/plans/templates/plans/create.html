@@ -1,5 +1,35 @@
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save" />
-</form>
+{% extends "base.html" %}
+<!-- Override default title -->
+{% block title %}Create Plan{% endblock title %}
+
+<!-- Override default title -->
+{% block content %}
+
+<div id="form_container" style="padding: 20px;">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Plan</label>
+                <input type="text" class="form-control" id="inputEmail4" placeholder="What's your plan?">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Category</label>
+                <input type="text" class="form-control" id="inputPassword4" placeholder="What's the plan's category?">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputStartDate">StartDate</label>
+                <input type="text" class="form-control" id="inputStartDate" placeholder="When to start?">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputEndDate">StartDate</label>
+                <input type="text" class="form-control" id="inputEndDate" placeholder="When will end?">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+
+</div>
+{% endblock content %}

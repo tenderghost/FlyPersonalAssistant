@@ -1,45 +1,21 @@
-<!doctype html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% load static %}
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <script src="{% static 'js/jquery-3.2.1.slim.min.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script>
-        $(function() {
-            var t = $("#btnSearchInProgress");
-            t.click(function() {
-                alert("Clicked!");
-            });
-        });
-    </script>
-    <title>Plan Management</title>
-</head>
+{% block title %}PlanManagement{% endblock title %}
 
-<body>
-    <h1>Plan Management with Docker</h1>
+{% block content %}
+<div id="plan_container" style="padding: 20px;">
     <div id="plan_filters" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group mr-2" role="group" aria-label="First group">
-            <button id="btnSearchInProgress" type="button" class="btn btn-info">In Progress</button>
-            <button type="button" class="btn btn-info">Finished</button>
-            <button type="button" class="btn btn-info">All</button>
-        </div>
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search plan text" aria-label="Input group example" aria-describedby="btnGroupAddon">
-            <div class="input-group-prepend">
-                <div class="input-group-text" id="btnGroupAddon">Search</div>
-            </div>
+            <a href="{% url 'plans:index' %}?type=not_start" class="btn btn-info">Not Started</a>
+            <a href="{% url 'plans:index' %}?type=in_progress" class="btn btn-info">In Progress</a>
+            <a href="{% url 'plans:index' %}?type=finished" class="btn btn-info">Finished</a>
+            <a href="{% url 'plans:index' %}?type=all" class="btn btn-info">All</a>
         </div>
     </div>
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Plan</th>
+                <th scope="col">Plan Text</th>
                 <th scope="col">Category</th>
                 <th scope="col">StartDate</th>
                 <th scope="col">EndDate</th>
@@ -53,8 +29,7 @@
         <tbody>
             {% for plan in latest_plan_list %}
             <tr>
-                <th scope="row">{{plan.id}}</th>
-                <td>{{plan.plan_text}}</td>
+                <td scope="row">{{plan.plan_text}}</td>
                 <td>{{plan.category}}</td>
                 <td>{{plan.start_date|date:"m/d/Y"}}</td>
                 <td>{{plan.end_date|date:"m/d/Y"}}</td>
@@ -73,7 +48,8 @@
     </table>
     <div>
         <a href="/admin/plans/plan/add/" class="btn btn-info">新建计划（Admin界面）</a>
+        <a href="{% url 'plans:create' %}" class="btn btn-info">新建计划（手动创建）</a>
     </div>
-</body>
 
-</html>
+</div>
+{% endblock content %}
