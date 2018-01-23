@@ -1,3 +1,4 @@
+from .models import TemHem
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
 
@@ -14,5 +15,10 @@ def update(request):
 
     tem = request.GET['tem'];
     hum = request.GET['hum'];
+
+    a = TemHem()
+    a.temperature = tem
+    a.humidity = hum
+    a.save()
 
     return HttpResponse("Yep, your temperature is " + tem + ", and Humidity is %s!" % hum)

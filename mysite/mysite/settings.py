@@ -35,7 +35,7 @@ LOGIN_URL = '/admin/login/'
 
 INSTALLED_APPS = [
     'periods.apps.PeriodsConfig',
-    'polls.apps.PollsConfig',
+    'sensors.apps.SensorsConfig',
     'plans.apps.PlansConfig',
     'django.contrib.admin',
     'django.contrib.auth',
