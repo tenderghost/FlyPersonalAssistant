@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sensor Data List</title>
+</head>
+<body>
+{{ temhem_list.count }}
+<ul>
+{% for temhum in temhum_list %}
+    <li>temperature:{{ temhum.temperature }}, humidity: {{ temhum.humidity }}, time: {{ temhum.data_time }}</li>
+{% endfor %}
+</ul>
+</body>
+</html>
