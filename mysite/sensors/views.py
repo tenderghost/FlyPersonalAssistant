@@ -15,12 +15,22 @@ def update(request):
     # receive data from sensors
     # common url looks like: /sensors/update/?tem=12.3&hum=45.6
 
+    # get latest data to check if newly updated is same as the last one
+    temhum = TemHem.objects.latest("data_time")
+
+    # get the newly created parameters
     tem = request.GET['tem']
     hum = request.GET['hum']
 
-    a = TemHem()
-    a.temperature = tem
-    a.humidity = hum
-    a.save()
+    if float(tem) == temhum.temperature and float(hum) == temhum.humidity:
+        # call the save to update the data_time field!
+        temhum.save()
+    else:
+        a = TemHem()
+        a.temperature = tem
+        a.humidity = hum
+        a.save()
+
+
 
     return HttpResponse("Yep, your temperature is " + tem + ", and Humidity is %s!" % hum)
