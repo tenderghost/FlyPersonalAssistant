@@ -1,13 +1,35 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block title %}Sensors Data List{% endblock title %} {% load static %} {% block extra_scripts %}
+<script src="{% static 'js/Chart.min.js' %}"></script>
+<script type="text/javascript">
+    $(function() {
+        var ctx = document.getElementById("temChart").getContext("2d");
+        var myChart = new Chart(ctx, {
+            type: 'line',
 
-{% block title %}Sensors Data List{% endblock title %}
+            data: {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [{
+                    label: "My First dataset",
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [0, 10, 5, 2, 20, 30, 45]
+                }]
+            },
 
-{% block content %}
+            options: {
+
+            }
+        });
+    });
+</script>
+{% endblock extra_scripts %} {% block content %}
 <ul>
-{% for temhum in temhum_list %}
+    {% for temhum in temhum_list %}
     <li>temperature:{{ temhum.temperature }}, humidity: {{ temhum.humidity }}, data_time: {{ temhum.data_time|date:"Y-m-d H:i:s" }}</li>
-{% endfor %}
+    {% endfor %}
 </ul>
-{% endblock content %}
+
+<canvas id="temChart" width="40" height="40"></canvas> {% endblock content %}
 </body>
+
 </html>
