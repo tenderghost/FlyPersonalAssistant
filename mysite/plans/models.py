@@ -17,13 +17,14 @@ class Plan(models.Model):
     # What category this plan belongs to
     category = models.CharField(max_length=50, blank=True)
     start_date = models.DateTimeField('plan to begin')
+
     end_date = models.DateTimeField('plan to end')
     # When this plan has finished?
     finished_at = models.DateTimeField(null=True, blank=True)
     # The progress of the plan
     progress = models.IntegerField(default=0)
     # The status of this plan
-    status = models.CharField(max_length = 1, choices = PLAN_STATUS, default = 'U')
+    status = models.CharField(max_length = 1, choices = PLAN_STATUS, default = 'I')
     # Remark of the plan
     remark = models.CharField(max_length = 500, blank = True)
 
