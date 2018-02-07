@@ -34,6 +34,7 @@ LOGIN_URL = '/admin/login/'
 # Application definition
 
 INSTALLED_APPS = [
+    'projects.apps.ProjectsConfig',
     'periods.apps.PeriodsConfig',
     'sensors.apps.SensorsConfig',
     'plans.apps.PlansConfig',
